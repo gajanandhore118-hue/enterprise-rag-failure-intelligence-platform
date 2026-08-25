@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Engineering Intelligence Platform</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/static/styles.css" />
+</head>
+<body>
+  <div class="app-shell">
+
+    <!-- Sidebar -->
+    <aside class="sidebar">
+      <div class="sidebar-brand">
+        <div class="brand-icon">⚙</div>
+        <div>
+          <div class="brand-tag">ADVANCED RAG</div>
+          <div class="brand-name">Engineering Intelligence</div>
+        </div>
+      </div>
+
+      <div class="sidebar-section">
+        <label for="productFamily">Product Family</label>
+        <select id="productFamily"></select>
+      </div>
+
+      <div class="sidebar-section">
+        <label for="searchScope">Search Scope</label>
+        <select id="searchScope">
+          <option value="selected">Selected family only</option>
+          <option value="all">All product families</option>
+        </select>
+      </div>
+
+      <div class="sidebar-section">
+        <div class="use-case-label">Use Cases</div>
+        <div class="use-case-chip">🔧 Engineering Change Analysis</div>
+        <div class="use-case-chip">🔍 Product Failure Investigation</div>
+      </div>
+
+      <div class="sidebar-section demo-questions">
+        <div class="use-case-label">Demo Questions</div>
+        <div class="demo-q" data-q="What risks should we consider before changing P104 from Material A to Material B?">What risks before changing P104 material?</div>
+        <div class="demo-q" data-q="Why did CP-600 housings crack in the field?">Why did CP-600 housings crack?</div>
+        <div class="demo-q" data-q="What did TR-1845 conclude?">What did TR-1845 conclude?</div>
+        <div class="demo-q" data-q="What was Supplier-Z's historical issue and was it corrected?">Supplier-Z historical issue?</div>
+        <div class="demo-q" data-q="What changed between VP-PUMP-04 Rev 4 and Rev 6?">VP-PUMP-04 Rev 4 vs Rev 6?</div>
+      </div>
+
+      <div class="sidebar-footer">
+        <div class="status-dot" id="statusDot"></div>
+        <span id="status">Checking API…</span>
+        <button id="clearBtn" class="clear-btn">🗑 Clear Chat</button>
+      </div>
+    </aside>
+
+    <!-- Main -->
+    <main class="main-area">
+
+      <!-- Chat -->
+      <section class="chat-panel">
+        <div class="chat-header">
+          <div class="chat-title">Engineering Assistant</div>
+          <div class="chat-subtitle">Ask about failures, changes, validations, suppliers and more</div>
+        </div>
+        <div id="chat" class="chat"></div>
+        <form id="chatForm" class="composer">
+          <textarea id="question" rows="2" placeholder="Ask an engineering question…" required></textarea>
+          <button id="sendBtn" type="submit">
+            <span id="sendLabel">Send</span>
+            <span class="send-icon">➤</span>
+          </button>
+        </form>
+      </section>
+
+      <!-- Evidence panel -->
+      <aside class="evidence-panel">
+        <div class="evidence-header">📎 Retrieved Evidence</div>
+
+        <div class="meta-cards">
+          <div class="meta-card" id="intentBox">
+            <div class="meta-card-label">Intent</div>
+            <div class="meta-card-value" id="intentVal">—</div>
+          </div>
+          <div class="meta-card" id="queryBox">
+            <div class="meta-card-label">Standalone Query</div>
+            <div class="meta-card-value" id="queryVal">—</div>
+          </div>
+        </div>
+
+        <div id="sources" class="sources"></div>
+      </aside>
+
+    </main>
+  </div>
+
+  <script src="/static/app.js"></script>
+</body>
+</html>
